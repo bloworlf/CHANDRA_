@@ -11,12 +11,18 @@ The following **required** tasks are completed:
 
 * [X] Fetch a list of countries in JSON format from this [URL](https://gist.githubusercontent.com/peymano-wmt/32dcb892b06648910ddd40406e37fdab/raw/db25946fd77c5873b0303b858e861ce724e0dcd0/countries.json)
 * [X] Display all the countries in a RecyclerView ordered by the position they appear in the JSON. In each table cell, show the country's "name", "region", "code" and "capital" in this format:
---------------------------------------- 
+---------------------------------------
+
 | 							|
+
 | "name", "region" 		"code" 	|
+
 | 							|
+
 | "capital" 				|
+
 | 							|
+
 ---------------------------------------
 * [X] The user should be able to scroll through the entire list of countries.
 * [X] The implementation should be robust
