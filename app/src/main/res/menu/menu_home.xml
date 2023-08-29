@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/listCountryFragment"
+        android:title="List Country" />
+    <item
+        android:id="@+id/countryDetailsFragment"
+        android:title="Country Details" />
+
+</menu>

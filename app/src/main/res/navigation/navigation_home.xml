@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_home"
+    app:startDestination="@id/listCountryFragment">
+
+    <fragment
+        android:id="@+id/listCountryFragment"
+        android:name="io.drdroid.chandra.ui.pages.home.fragments.ListCountryFragment"
+        android:label="Countries">
+        <action
+            android:id="@+id/list_to_details"
+            app:destination="@id/countryDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/countryDetailsFragment"
+        android:name="io.drdroid.chandra.ui.pages.home.fragments.CountryDetailsFragment"
+        android:label="Details" />
+</navigation>
