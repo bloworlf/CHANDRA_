@@ -24,14 +24,14 @@ The following **required** tasks are completed:
   * [X] support device rotation.
 
 
-Constraints
+## Constraints
 
 * [X] Use coroutines
 * [X] Do not use Compose
 * [X] Do not use Dagger
 
 
-The following **optional** features are implemented:
+## The following **optional** features are implemented:
 
 * [X] Background color of card is the dominant country's flag's color
   * [X] Displayed text switch from black to white according to the darkness of the background color to provide good contrast
