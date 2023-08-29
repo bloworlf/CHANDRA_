@@ -45,6 +45,7 @@ The following **required** tasks are completed:
 * [X] Used MVVM design pattern
 * [X] Added a search bar to filter out the list of countries
 * [X] Toolbar hides/shows on scroll
+* [X] Implemented swipe refresh
 
 
 ## Screenshots
