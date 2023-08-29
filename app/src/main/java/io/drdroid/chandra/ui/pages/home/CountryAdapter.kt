@@ -48,8 +48,8 @@ class CountryAdapter(
 
         holder.capital.text = country.capital
         holder.code.text = country.code
-        holder.region.text = country.region
-        holder.name.text = country.name
+//        holder.region.text = country.region
+        holder.name.text = "${country.name}, ${country.region}"
 
         var domColor:Int = 0
         var color:Int = 0
@@ -74,12 +74,12 @@ class CountryAdapter(
 
                     if (Utils.isDark(domColor)) {
                         holder.name.setTextColor(Color.WHITE)
-                        holder.region.setTextColor(Color.WHITE)
+//                        holder.region.setTextColor(Color.WHITE)
                         holder.capital.setTextColor(Color.WHITE)
                         holder.code.setTextColor(Color.WHITE)
                     } else {
                         holder.name.setTextColor(Color.BLACK)
-                        holder.region.setTextColor(Color.BLACK)
+//                        holder.region.setTextColor(Color.BLACK)
                         holder.capital.setTextColor(Color.BLACK)
                         holder.code.setTextColor(Color.BLACK)
                     }
