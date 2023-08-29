@@ -20,6 +20,7 @@ import io.drdroid.chandra.data.model.country.CountryModel
 import io.drdroid.chandra.utils.PaletteUtils
 import io.drdroid.chandra.utils.Utils
 import io.drdroid.chandra.utils.Utils.colorTransition
+import java.util.Collections
 
 class CountryAdapter(
     val context: Context,
@@ -51,8 +52,8 @@ class CountryAdapter(
 //        holder.region.text = country.region
         holder.name.text = "${country.name}, ${country.region}"
 
-        var domColor:Int = 0
-        var color:Int = 0
+        var domColor: Int = 0
+        var color: Int = 0
 
         Glide.with(context).asBitmap().load(Uri.parse(countryFlag)).centerCrop()
             .into(object : CustomTarget<Bitmap>() {
@@ -96,7 +97,10 @@ class CountryAdapter(
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val filterResults = FilterResults()
-                if (constraint.isNullOrEmpty()) {
+                if (list.isEmpty()) {
+                    filterResults.count = 0
+                    filterResults.values = list
+                } else if (constraint.isNullOrEmpty()) {
                     filterResults.count = list.size
                     filterResults.values = list
                 } else {
@@ -117,8 +121,13 @@ class CountryAdapter(
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                filteredList = results?.values as MutableList<CountryModel>
-                notifyDataSetChanged()
+                val filteredValues = results?.values
+                if (filteredValues is MutableList<*>) {
+                    filteredList = filteredValues as MutableList<CountryModel>
+                    notifyDataSetChanged()
+                } else {
+                    //
+                }
             }
         }
     }

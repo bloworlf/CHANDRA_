@@ -47,6 +47,7 @@ class ListCountryFragment : BaseFragment() {
     private lateinit var manager: GridLayoutManager
 
     private var searchView: SearchView? = null
+    private var q: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,7 +105,7 @@ class ListCountryFragment : BaseFragment() {
 
         viewModel.countries.observe(viewLifecycleOwner) {
             swipeRefresh.isRefreshing = false
-            setupAdapter(it)
+            setupAdapter(it, q)
         }
 
 
@@ -133,13 +134,14 @@ class ListCountryFragment : BaseFragment() {
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
+                q = query
                 adapter.filter.filter(query)
                 return true
             }
         })
     }
 
-    private fun setupAdapter(list: List<CountryModel>) {
+    private fun setupAdapter(list: List<CountryModel>, q: String?) {
         adapter = CountryAdapter(requireContext(), list, findNavController()) { upper, lower ->
 //            (activity as AppCompatActivity).supportActionBar!!.setBackgroundDrawable(
 //                ColorDrawable(upper)
@@ -162,5 +164,6 @@ class ListCountryFragment : BaseFragment() {
 
         val emptyDataObserver = EmptyDataObserver(recyclerView, bind.emptyDataParent.root)
         adapter.registerAdapterDataObserver(emptyDataObserver)
+        adapter.filter.filter(q)
     }
 }

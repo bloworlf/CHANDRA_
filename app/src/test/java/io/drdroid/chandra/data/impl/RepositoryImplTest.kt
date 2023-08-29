@@ -3,6 +3,7 @@ package io.drdroid.chandra.data.impl
 import io.drdroid.chandra.data.model.country.CountryModel
 import io.drdroid.chandra.data.network.CountryCall
 import io.drdroid.chandra.data.repository.Repository
+import io.drdroid.chandra.utils.TestUtils
 import kotlinx.coroutines.test.runTest
 import okhttp3.ResponseBody
 import okhttp3.internal.http.RealResponseBody
@@ -38,41 +39,10 @@ class RepositoryImplTest {
     }
 
     @Test
-    fun getCountryCall() = runTest {
+    fun getCountries() = runTest {
         Mockito.`when`(countryCall.getCountries()).thenReturn(
             Response.success(
-                listOf(
-                    CountryModel(
-                        capital = null,
-                        code = null,
-                        currency = null,
-                        demonym = null,
-                        flag = null,
-                        language = null,
-                        name = null,
-                        region = null
-                    ),
-                    CountryModel(
-                        capital = null,
-                        code = null,
-                        currency = null,
-                        demonym = null,
-                        flag = null,
-                        language = null,
-                        name = null,
-                        region = null
-                    ),
-                    CountryModel(
-                        capital = null,
-                        code = null,
-                        currency = null,
-                        demonym = null,
-                        flag = null,
-                        language = null,
-                        name = null,
-                        region = null
-                    ),
-                )
+                TestUtils.countryList
             )
         )
         assertEquals(countryCall.getCountries().isSuccessful, repo.getCountries().isSuccessful)
@@ -80,7 +50,7 @@ class RepositoryImplTest {
     }
 
     @Test
-    fun getCountryCall_Empty_Body_Success() = runTest {
+    fun getCountries_Empty_Body_Success() = runTest {
         Mockito.`when`(countryCall.getCountries()).thenReturn(
             Response.success(emptyList())
         )
@@ -90,7 +60,7 @@ class RepositoryImplTest {
     }
 
     @Test
-    fun getCountryCall_Error_Response() = runTest {
+    fun getCountries_Error_Response() = runTest {
         Mockito.`when`(countryCall.getCountries()).thenReturn(
             Response.error(404, RealResponseBody("", 0, Buffer()))
         )
